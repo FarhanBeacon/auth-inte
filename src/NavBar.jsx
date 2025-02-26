@@ -1,23 +1,14 @@
+import { useContext } from "react";
 import { NavLink } from "react-router";
+import { AuthContext } from "./AuthProvider";
 
 function NavBar() {
+  const {name} = useContext(AuthContext);
   const links = (
     <>
-      <NavLink to={"/"}>
-        <li>
-          <a>Home</a>
-        </li>
-      </NavLink>
-      <NavLink to={"/login"}>
-        <li>
-          <a>Login</a>
-        </li>
-      </NavLink>
-      <NavLink to={"/signUp"}>
-        <li>
-          <a>SignUp</a>
-        </li>
-      </NavLink>
+      <li><NavLink to={"/"}>Home</NavLink></li>
+      <li><NavLink to={"/login"}>Login</NavLink></li>
+      <li><NavLink to={"/signUp"}>SignUp</NavLink></li>
     </>
   );
   return (
@@ -54,7 +45,7 @@ function NavBar() {
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Button</a>
+          <button className="btn font-bold rounded-full text-xl">{name}</button>
         </div>
       </div>
     </>
